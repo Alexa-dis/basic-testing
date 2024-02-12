@@ -7,15 +7,11 @@ describe('simpleCalculator tests', () => {
   });
 
   test('should subtract two numbers', () => {
-    expect(simpleCalculator({ a: 3, b: 1, action: Action.Subtract })).toBe(
-      2,
-    );
+    expect(simpleCalculator({ a: 3, b: 1, action: Action.Subtract })).toBe(2);
   });
 
   test('should multiply two numbers', () => {
-    expect(simpleCalculator({ a: 2, b: 2, action: Action.Multiply })).toBe(
-      4,
-    );
+    expect(simpleCalculator({ a: 2, b: 2, action: Action.Multiply })).toBe(4);
   });
 
   test('should divide two numbers', () => {
