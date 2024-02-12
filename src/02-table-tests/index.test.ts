@@ -23,7 +23,7 @@ describe('simpleCalculator', () => {
   it.each(testCases)(
     'should calculate actions properly',
     ({ a, b, action, expected }) => {
-      expect(simpleCalculator({ a, b, action })).toEqual(expected);
+      expect(simpleCalculator({ a, b, action })).toBe(expected);
     },
   );
 });

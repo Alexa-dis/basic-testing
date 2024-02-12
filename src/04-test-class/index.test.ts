@@ -9,15 +9,19 @@ import {
 
 describe('BankAccount', () => {
   let bankAccount: BankAccount;
+
   beforeEach(() => {
     bankAccount = new BankAccount(100);
   });
+
   afterAll(() => {
     jest.clearAllMocks();
   });
 
   test('should create account with initial balance', () => {
-    expect(getBankAccount(100)).toEqual(bankAccount);
+    const newBankAccount = new BankAccount(100);
+    const initialBalance = getBankAccount(100);
+    expect(newBankAccount).toEqual(initialBalance);
   });
 
   test('should throw InsufficientFundsError error when withdrawing more than balance', () => {
@@ -41,19 +45,19 @@ describe('BankAccount', () => {
 
   test('should deposit money', () => {
     bankAccount.deposit(100);
-    expect(bankAccount.getBalance()).toEqual(200);
+    expect(bankAccount.getBalance()).toBe(200);
   });
 
   test('should withdraw money', () => {
     bankAccount.withdraw(100);
-    expect(bankAccount.getBalance()).toEqual(0);
+    expect(bankAccount.getBalance()).toBe(0);
   });
 
   test('should transfer money', () => {
     const newBankAccount = new BankAccount(100);
     newBankAccount.transfer(100, bankAccount);
-    expect(newBankAccount.getBalance()).toEqual(0);
-    expect(bankAccount.getBalance()).toEqual(200);
+    expect(newBankAccount.getBalance()).toBe(0);
+    expect(bankAccount.getBalance()).toBe(200);
   });
 
   test('fetchBalance should return number in case if request did not failed', async () => {
@@ -68,7 +72,7 @@ describe('BankAccount', () => {
     const mockBalance = 10;
     jest.spyOn(bankAccount, 'fetchBalance').mockResolvedValueOnce(mockBalance);
     await bankAccount.synchronizeBalance();
-    expect(bankAccount.getBalance()).toEqual(mockBalance);
+    expect(bankAccount.getBalance()).toBe(mockBalance);
   });
 
   test('should throw SynchronizationFailedError if fetchBalance returned null', async () => {

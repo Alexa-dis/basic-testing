@@ -9,7 +9,7 @@ import {
 
 describe('resolveValue', () => {
   test('should resolve provided value', async () => {
-    await expect(resolveValue('value')).resolves.toBeDefined();
+    await expect(resolveValue('value')).resolves.toBe('value');
   });
 });
 
